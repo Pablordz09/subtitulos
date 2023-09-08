@@ -4,6 +4,7 @@ const downloadBtn = document.querySelector(".download");
 const inputLanguage = document.querySelector("#language");
 const clearBtn = document.querySelector(".clear");
 
+
 let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 let recognition = new SpeechRecognition(); // Crear una única instancia
 recognition.continuous = true; // Permitir reconocimiento continuo
@@ -163,3 +164,18 @@ function togglePause() {
 
 // Detectar la pausa/reanudación al hacer doble clic en el botón
 recordBtn.addEventListener("dblclick", togglePause);
+
+
+const div = document.querySelector('.result');
+
+// Obtener la altura total del contenido del div
+const height = div.scrollHeight;
+
+// Establecer un intervalo para comprobar la posición del scroll
+setInterval(() => {
+  // Si el scroll está en la parte inferior del div
+  if (div.scrollTop + div.clientHeight >= height) {
+    // Desplazar el div hacia abajo
+    div.scrollTop += 500;
+  }
+}, 50);
